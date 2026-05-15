@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 22nd Birthday, Gek 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- MUTE BUTTON -->
+  <button id="muteBtn" class="mute-btn hidden" aria-label="Toggle audio">🔇</button>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- SCREEN 1 — LOADING / COUNT          -->
+  <!-- ═══════════════════════════════════ -->
+  <section id="screen1" class="screen active">
+    <div class="screen1-inner">
+      <!-- Bubble deco -->
+      <div class="bubble-bg">
+        <span class="bb bb1"></span><span class="bb bb2"></span>
+        <span class="bb bb3"></span><span class="bb bb4"></span>
+        <span class="bb bb5"></span><span class="bb bb6"></span>
+      </div>
+
+      <p class="s1-label">Sebuah perjalanan dimulai</p>
+      <div class="count-wrap">
+        <span id="counter" class="counter-num">0</span>
+      </div>
+      <p id="narrativeText" class="narrative-text">Awal dari sebuah perjalanan...</p>
+
+      <div class="progress-bar-wrap">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- SCREEN 2 — GIFT BOX                 -->
+  <!-- ═══════════════════════════════════ -->
+  <section id="screen2" class="screen">
+    <div class="screen2-inner">
+      <div class="sparkle-field" id="sparkleField"></div>
+
+      <p class="s2-hint">Klik untuk membuka hadiah kamu, Gek 🎁</p>
+
+      <div id="giftBox" class="gift-box" role="button" tabindex="0" aria-label="Buka hadiah">
+        <!-- Lid -->
+        <div class="gift-lid" id="giftLid">
+          <div class="gift-lid-ribbon"></div>
+        </div>
+        <!-- Body -->
+        <div class="gift-body">
+          <div class="gift-ribbon-v"></div>
+          <div class="gift-ribbon-h"></div>
+        </div>
+        <!-- Bow -->
+        <div class="gift-bow">
+          <div class="bow-left"></div>
+          <div class="bow-right"></div>
+          <div class="bow-center"></div>
+        </div>
+      </div>
+
+      <!-- Confetti container -->
+      <div id="confettiContainer" class="confetti-container"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- SCREEN 3 — ENVELOPE                 -->
+  <!-- ═══════════════════════════════════ -->
+  <section id="screen3" class="screen">
+    <div class="screen3-inner">
+      <p class="s3-hint">Ada sesuatu untukmu, Gek. Klik untuk membuka 💌</p>
+
+      <div id="envelope" class="envelope" role="button" tabindex="0" aria-label="Buka surat">
+        <div class="env-flap" id="envFlap"></div>
+        <div class="env-body">
+          <div class="env-left-fold"></div>
+          <div class="env-right-fold"></div>
+          <div class="env-bottom-fold"></div>
+        </div>
+        <div class="env-letter" id="envLetter">
+          <div class="env-letter-lines">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- SCREEN 4 — LETTER                   -->
+  <!-- ═══════════════════════════════════ -->
+  <section id="screen4" class="screen">
+    <!-- Ambient hearts / bubbles -->
+    <div id="ambientParticles" class="ambient-particles"></div>
+
+    <div class="letter-scroll-wrap">
+      <article class="letter-card" id="letterCard">
+        <div class="letter-top-deco">
+          <span class="deco-wave">〰〰〰</span>
+        </div>
+
+        <header class="letter-header">
+          <p class="letter-date">15 Mei 2026</p>
+          <h1 class="letter-title">Happy Birthday,<br /><em>Gek</em> 🤍</h1>
+        </header>
+
+        <div class="letter-body">
+          <p>Gek, Selamat Ulang Tahun yang ke-22.</p>
+
+          <p>Gak kerasa, semenjak kenal kamu di akhir 2024, sudah cukup banyak hal yang terjadi — dan perlahan tapi pasti, aku mulai mengenal sesosok Tika yang sesungguhnya. Atau setidaknya, Tika versi aku.</p>
+
+          <p>Dulu, di awal-awal kenal kamu, aku kira kamu itu orangnya polos. Serius, polos. Kaget? Haha — tapi ini bukan tanpa alasan. Berawal dari kamu yang langsung menaruh empati ke orang yang minta uang buat beli beras, padahal bisa jadi itu penipuan. Tapi ekspektasimu yang seolah ingin membantu itu... entah kenapa justru ninggalin kesan tersendiri buat aku.</p>
+
+          <p>Seiring waktu, kamu mulai beradaptasi, dan dari situ lahirlah Tika yang sekarang aku kenal — sesosok yang ceria dengan energi yang luar biasa meluap-luap, berjam-jam berlalu tapi kamu tetap semangat, seperti tak mengenal apa itu kata lelah.</p>
+
+          <p>Tapi di balik Tika yang ceria itu, aku tau kamu juga menyimpan banyak hal. Dan aku memilih untuk seolah-olah tidak tahu — bukan karena tidak peduli, tapi justru karena aku ingin kamu merasa aman dulu, sampai pada akhirnya kamu sendiri yang memilih untuk bercerita.</p>
+
+          <p>Di hari ini, aku cuma mau bilang terima kasih atas segalanya, Gek. Maaf kalau di hari yang spesial ini aku belum bisa ngasih apa-apa yang berarti — sementara kamu sudah banyak banget ngasih bantuan buat aku.</p>
+
+          <p>Semoga di usiamu yang ke-22 ini, kamu bisa jadi pribadi yang terus bertumbuh. Semua tujuan dan cita-cita yang selama ini terasa jauh, semoga perlahan-lahan mulai mendekati kenyataan.</p>
+
+          <p class="letter-closing">Happy birthday, Gekk. 🤍</p>
+        </div>
+
+        <div class="letter-bottom-deco">
+          <span class="deco-wave">〰〰〰</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
