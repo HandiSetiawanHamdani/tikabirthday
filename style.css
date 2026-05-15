@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════
    TIKA'S 22ND BIRTHDAY — style.css
-   Ocean Soft Theme
+   Ocean Soft Theme — FIXED v2
    ═══════════════════════════════════════════════════════ */
 
 /* ── TOKENS ──────────────────────────────────────────── */
@@ -26,9 +26,16 @@
 /* ── RESET ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body {
-  width: 100%; height: 100%;
-  overflow: hidden;
+html {
+  width: 100%;
+  height: 100%;
+  /* FIXED: removed overflow:hidden from html so screen4 can scroll */
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* hidden on body only, screen4 overrides this */
   background: var(--bg);
   color: var(--text);
   font-family: var(--ff-body);
@@ -154,10 +161,11 @@ html, body {
   opacity: 0.7;
   text-align: center;
   margin-top: 16px;
-  min-height: 2em;
-  padding: 0 16px;
-  transition: opacity 0.4s;
+  min-height: 3em; /* FIXED: taller min-height agar teks tidak loncat layout */
+  padding: 0 24px;
+  transition: opacity 0.35s ease;
   max-width: 420px;
+  line-height: 1.6;
 }
 .narrative-text.changing { opacity: 0; }
 
@@ -172,7 +180,7 @@ html, body {
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, var(--primary), var(--accent));
-  transition: width 0.12s linear;
+  transition: width 0.15s linear;
   border-radius: 0 3px 3px 0;
 }
 
@@ -412,7 +420,6 @@ html, body {
   overflow: hidden;
 }
 
-/* Side folds */
 .env-left-fold, .env-right-fold, .env-bottom-fold {
   position: absolute;
   border-style: solid;
@@ -491,24 +498,26 @@ html, body {
 }
 
 /* ════════════════════════════════════════════════════════
-   SCREEN 4 — LETTER
+   SCREEN 4 — LETTER (FIXED)
    ════════════════════════════════════════════════════════ */
 #screen4 {
-  overflow: hidden;
-  align-items: flex-start;
-}
-
-.letter-scroll-wrap {
-  width: 100%;
-  height: 100vh;
+  /* FIXED: override fixed positioning to allow natural scroll */
+  position: fixed;
+  inset: 0;
   overflow-y: auto;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  align-items: flex-start;
+  display: block; /* FIXED: block so scroll works naturally */
+}
+
+/* FIXED: wrapper fills screen and scrolls */
+.letter-scroll-wrap {
+  min-height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
-  padding: 40px 20px 80px;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary) transparent;
+  padding: 40px 20px 100px;
 }
 
 .letter-card {
@@ -523,7 +532,6 @@ html, body {
     0 32px 64px rgba(45,74,62,0.08),
     inset 0 1px 0 rgba(255,255,255,0.8);
   position: relative;
-  /* Paper texture via gradient */
   background-image:
     repeating-linear-gradient(
       0deg,
@@ -581,11 +589,11 @@ html, body {
 
 .letter-body p {
   font-family: var(--ff-body);
-  font-size: clamp(15px, 3.5vw, 17px);
-  line-height: 1.85;
+  font-size: clamp(15px, 3.8vw, 17px);
+  line-height: 1.9;
   color: var(--text);
-  opacity: 0.85;
-  margin-bottom: 20px;
+  opacity: 0.88;
+  margin-bottom: 22px;
 }
 
 .letter-closing {
@@ -660,9 +668,16 @@ html, body {
     height: clamp(160px, 52vw, 210px);
   }
 
-  .letter-scroll-wrap { padding: 24px 12px 80px; }
+  /* FIXED: more padding bottom for mobile to avoid content cut */
+  .letter-scroll-wrap { padding: 24px 16px 120px; }
+
+  .letter-body p {
+    font-size: 15px;
+    line-height: 1.85;
+  }
 }
 
 @media (min-width: 1024px) {
   .letter-card { padding: 64px 72px; }
-}
+   }
+   
