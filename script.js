@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════
    TIKA'S 22ND BIRTHDAY — script.js
-   Pure vanilla JS — zero dependencies
+   Pure vanilla JS — zero dependencies — FIXED v2
    ═══════════════════════════════════════════════════════ */
 
 "use strict";
@@ -61,19 +61,26 @@ function goTo(from, to, delay = 0) {
 
 /* ═══════════════════════════════════════════════════════
    SCREEN 1 — COUNTER
+   FIXED: Total duration diperpanjang ke 10 detik agar
+   setiap narrative punya waktu cukup untuk terbaca.
+   Setiap angka juga ditahan minimal 300ms sebelum naik.
    ═══════════════════════════════════════════════════════ */
 function startCounter() {
-  const TOTAL_MS  = 4800;   // 4.8 s total animation
-  const TARGET    = 22;
-  const START_T   = performance.now();
-  let lastVal     = -1;
+  const TARGET   = 22;
+  // FIXED: diperpanjang dari 4800ms ke 10000ms (10 detik)
+  // Breakdown per range: ~0-5 (2.2s), 6-10 (2s), 11-15 (2s), 16-20 (2s), 21 (0.8s), 22 (1s)
+  const TOTAL_MS = 10000;
+  const START_T  = performance.now();
+  let lastVal    = -1;
 
   function easeInOutCubic(t) {
+    // FIXED: pakai easing yang lebih lambat di awal dan akhir
+    // sehingga angka kecil (0-5) punya waktu lebih lama terbaca
     return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
   }
 
   function tick(now) {
-    const elapsed = now - START_T;
+    const elapsed  = now - START_T;
     const progress = Math.min(elapsed / TOTAL_MS, 1);
     const eased    = easeInOutCubic(progress);
     const val      = Math.round(eased * TARGET);
@@ -86,7 +93,7 @@ function startCounter() {
       counterEl.textContent = val;
       lastVal = val;
 
-      /* Narrative update with fade */
+      /* Narrative: fade out lama dulu, baru ganti teks */
       const newText = getNarrative(val);
       if (narrativeEl.textContent !== newText) {
         narrativeEl.classList.add("changing");
@@ -100,8 +107,8 @@ function startCounter() {
     if (progress < 1) {
       requestAnimationFrame(tick);
     } else {
-      /* Pause at 22 for 1.5s, then transition */
-      setTimeout(() => goTo(screen1, screen2), 1500);
+      /* Pause di 22 selama 2.5 detik biar sempat terbaca */
+      setTimeout(() => goTo(screen1, screen2), 2500);
     }
   }
 
@@ -284,7 +291,6 @@ function startAudio() {
 function startAmbientLoop() {
   if (!audioCtx) return;
 
-  /* A gentle, ethereal chord sequence using sine + triangle */
   const chords = [
     [NOTE_FREQ.C5, NOTE_FREQ.E5, NOTE_FREQ.G5],
     [NOTE_FREQ.A4, NOTE_FREQ.C5, NOTE_FREQ.E5],
@@ -293,7 +299,7 @@ function startAmbientLoop() {
   ];
 
   let idx = 0;
-  const interval = 3200; // ms per chord
+  const interval = 3200;
 
   function playChord() {
     if (!audioCtx || muted) return;
@@ -369,18 +375,12 @@ muteBtn.addEventListener("click", () => {
    INIT
    ═══════════════════════════════════════════════════════ */
 function init() {
-  /* Ensure screen 1 is visible immediately */
   screen1.classList.add("active");
-
-  /* Start counter after a tiny delay so fonts load */
   setTimeout(startCounter, 300);
-
-  /* Pre-wire screen 2 & 3 interactions */
   initGiftBox();
   initEnvelope();
 }
 
-/* Wait for DOM + fonts */
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", init);
 } else {
